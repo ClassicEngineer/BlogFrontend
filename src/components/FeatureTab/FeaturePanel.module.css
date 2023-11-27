@@ -1,0 +1,13 @@
+.panel {
+    display: flex;
+    justify-content: center;
+    max-width: 1000px;
+    border-radius: 30px;
+    gap: 50px;
+
+}
+
+.none {
+    display: none;
+}
+
