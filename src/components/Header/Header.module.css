@@ -4,3 +4,9 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.header a{
+    text-decoration: none;
+    text-transform: none;
+    color: black;
+}

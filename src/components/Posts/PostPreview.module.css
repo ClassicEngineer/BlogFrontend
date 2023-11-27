@@ -1,4 +1,4 @@
-.card {
+.postPreview {
     display: flex;
     flex-direction: column;
     width: 300px;
@@ -13,11 +13,16 @@
 
 }
 
-.card h2 {
+.postPreview:hover {
+    box-shadow: 0 6px 12px -4px #001b4433;
+    cursor: pointer;
+}
+
+.postPreview h2 {
     padding-left: 5px;
 }
 
-.card time {
+.postPreview time {
     padding-left: 5px;
     padding-bottom: 5px;
     color: rgb(190, 185, 185);

@@ -8,6 +8,7 @@ const IconButton = (props) => {
                          size={props.size || "2x"}
                          onClick={props.onClick}
                          className={classes.codeButton}
+                         key={props.faIcon.iconName}
         />
 
     );

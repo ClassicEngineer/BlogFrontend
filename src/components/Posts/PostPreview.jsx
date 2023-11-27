@@ -7,7 +7,7 @@ const PostPreview = ({post}) => {
     }
 
     return (
-        <div className={classes.card}
+        <div className={classes.postPreview}
                 onClick={goToPost}>
                 <img src={'https://i.pinimg.com/originals/f8/12/1b/f8121bde622218751169443053ee5ec5.gif'}
                      alt={'Default'}

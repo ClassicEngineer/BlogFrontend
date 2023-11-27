@@ -1,15 +1,13 @@
 import React from 'react';
 import Header from "../components/Header/Header";
-import LoginForm from "../components/UI/LoginForm/LoginForm";
 
-const Login = () => {
+const Statistics = () => {
     return (
         <div className="App">
             <Header/>
-            <h2>Sign In</h2>
-            <LoginForm/>
+            <h1>Statistics page</h1>
         </div>
     );
 };
 
-export default Login;
+export default Statistics;

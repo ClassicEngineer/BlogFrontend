@@ -1,4 +1,5 @@
 .codeButton:hover {
     color:darkgrey;
     transform: scale(0.9);
+    cursor: pointer;
 }
