@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
     faChartSimple,
-    faGear, faHouse,
+    faGear, faHouse, faLock,
     faMagnifyingGlass,
     faMoon, faPlus,
     faQuestion,
@@ -11,19 +11,23 @@ import {
 import classes from "./FeaturePanel.module.css";
 import {faGithub} from "@fortawesome/free-brands-svg-icons";
 import IconButton from "../UI/IconButton/IconButton";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import ModalView from "../UI/ModalView/ModalView";
 import About from "./About";
+import {AuthContext} from "../../context";
 
 const FeaturePanel = (props) => {
     const navigate = useNavigate();
     const [modal, setModal] = useState(false);
+    const {isAuth, setIsAuth} = useContext(AuthContext);
 
+    const logout = () => {
+        setIsAuth(false);
+        localStorage.removeItem('auth')
+        navigate('/', {replace: true})
+    }
     function openLoginPage() {
-        navigate('/login')
-        iconsList['home'].show = true;
-        iconsList['login'].show = false;
-        setIconsList(iconsList); // not working as expected
+        navigate('/login', {replace: true})
     }
 
     function openSettingsPage() {
@@ -47,50 +51,72 @@ const FeaturePanel = (props) => {
         window.open('https://github.com/stars/ClassicEngineer/lists/blog', '_blank').focus();
     }
 
-    const home = <IconButton
-        faIcon = {faHouse}
-    />
+    const home = <Link to={"/"} key={0}>
+        <IconButton faIcon = {faHouse}/>
+    </Link>
 
     const search = <IconButton faIcon={faMagnifyingGlass}
                                    onClick = {openSearchPage}
+                               key ={1}
     />
 
     const login = <IconButton faIcon={faRightToBracket}
-                onClick = {openLoginPage}
+                              onClick = {openLoginPage}
+                              key = {2}
     />
 
     const settings = <IconButton faIcon={faGear}
-                onClick = {openSettingsPage}
+                                 onClick = {openSettingsPage}
+                                 key={3}
     />
 
     const github = <IconButton faIcon={faGithub}
                 onClick = {openGithubProjectPage}
+                               key = {4}
     />
 
     {/*add post, private function*/}
-    const addPost = <IconButton faIcon={faPlus}/>
+    const addPost = <Link
+        to={"/addPost"}
+        key = {8}>
+        <IconButton faIcon={faPlus}/>
+    </Link>
+
+
+    const lock = <IconButton faIcon={faLock}
+                                      onClick={logout}
+                             key = {5}
+
+    />
 
     const about = <IconButton faIcon={faQuestion}
                 onClick = {openModalQuestion}
+                              key = {6}
     />
     const stats = <IconButton faIcon={faChartSimple}
                 onClick = {openStatsPage}
+                              key = {7}
     />
 
 
     const icons = {
+        home: {
+            icon: home,
+            show: false
+        },
         login: {
             icon: login,
             show: true
+        },
+        lock: {
+            icon: lock,
+            show: false,
         },
         settings : {
             icon: settings,
             show: true
         },
-        home: {
-            icon: home,
-            show: false
-        },
+
         search: {
             icon: search,
             show: true
@@ -111,22 +137,26 @@ const FeaturePanel = (props) => {
             icon: github,
             show: true,
         }
-
     }
-
-    const [iconsList, setIconsList] = useState(icons); // is it legal?
 
 
     if (props.visible) {
+
+        icons['home'].show = window.location.pathname !== '/';
+        icons['lock'].show = isAuth;
+        icons['addPost'].show = isAuth;
+        icons['login'].show = !isAuth;
+
         return (
             <div className={classes.panel}>
                 <ModalView visible={modal} setVisible={setModal}>
                     <About/>
                 </ModalView>
                 {
-                    Object.values(iconsList)
-                        .filter( v => v.show)
-                        .map(v => v.icon)
+                    Object.keys(icons)
+                        .filter( key => icons[key].show)
+                        .filter(key => '/' + key !== window.location.pathname)
+                        .map(key => icons[key].icon)
                 }
         </div>);
     } else {

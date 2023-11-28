@@ -19,6 +19,8 @@
 .formContainer input {
     border: 1px solid #d6dce2;
     border-radius: 8px;
+    padding: 3px;
+    text-align: center;
 }
 
 .formContainer button {
@@ -32,8 +34,6 @@
     background-color: #358560;
 }
 
-
-.formContainer input {
-    border: #ced5dc;
-    border-radius: 8px;
+.formContainer button:active {
+    background-color: #4fa17b;
 }

@@ -4,8 +4,7 @@ import Header from "../components/Header/Header";
 const Search = () => {
     return (
         <div className="App">
-            <Header/>
-            <h2>Search page</h2>
+            <h2>Search</h2>
         </div>
     );
 };

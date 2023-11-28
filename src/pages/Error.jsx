@@ -4,8 +4,7 @@ import Header from "../components/Header/Header";
 const Error = () => {
     return (
         <div className="App">
-            <Header/>
-            <h1>Error page</h1>
+            <h1>Error!</h1>
         </div>
     );
 };
