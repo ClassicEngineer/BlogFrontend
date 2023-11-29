@@ -1,9 +1,11 @@
 import React from 'react';
 import classes from './PostPreview.module.css'
+import {useNavigate} from "react-router-dom";
 const PostPreview = ({post}) => {
+    const navigate = useNavigate()
 
     function goToPost() {
-        console.log('Go to post with id:')
+        navigate(`/posts/${post.id}`)
     }
 
     return (

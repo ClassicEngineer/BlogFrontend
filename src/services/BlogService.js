@@ -21,6 +21,10 @@ class BlogService {
             content: content
         });
     }
+
+    async getPostById(id) {
+        return await  axios.get(BLOG_API_BASE_URL + 'posts/' + id);
+    }
 }
 
 export default new BlogService()

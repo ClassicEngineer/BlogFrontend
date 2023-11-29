@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import Search from "../pages/Search";
 import Settings from "../pages/Settings";
 import Statistics from "../pages/Statistics";
+import Post from "../pages/Post";
 
 
 export const publicRoutes = [
@@ -14,6 +15,7 @@ export const publicRoutes = [
     {path: '/search', component: Search},
     {path: '/settings', component: Settings},
     {path: '/stats', component: Statistics},
+    {path: '/posts/:id', component: Post},
 ]
 
 export const privateRoutes = [

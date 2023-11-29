@@ -26,8 +26,7 @@ const Editor = () => {
                 height="100%"
             />
 
-            {/*<MDEditor.Markdown source={value} className={classes.postContent} />*/}
-        
+
             <FormButton onClick={publish}>Publish</FormButton>
         </div>
     );
