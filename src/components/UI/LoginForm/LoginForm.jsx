@@ -2,6 +2,7 @@ import React, {useContext, useState} from "react";
 import classes from "./LoginForm.module.css";
 import {AuthContext} from "../../../context";
 import {useNavigate} from "react-router-dom";
+import FormButton from "../Button/FormButton";
 
 
 const LoginForm = (props) => {
@@ -36,7 +37,7 @@ const LoginForm = (props) => {
                        onChange={e => setPassword(e.target.value)}
                 ></input>
 
-                <button>Sign in</button>
+                <FormButton>Sign in</FormButton>
             </div>
         </form>
     );

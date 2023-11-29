@@ -12,6 +12,7 @@ import Footer from "./components/Footer/Footer";
 import {useEffect, useState} from "react";
 import {AuthContext} from "./context";
 import AddPost from "./pages/AddPost";
+import AppRouter from "./components/Router/AppRouter";
 function App() {
 
     const [isAuth, setIsAuth] = useState(false);
@@ -29,15 +30,7 @@ function App() {
         }}>
         <BrowserRouter>
             <Header/>
-            <Routes>
-                <Route path="/"  element={<Home/>}></Route>
-                <Route path="/login" element={<Login/>}></Route>
-                <Route path="/settings" element={<Settings/>}></Route>
-                <Route path="/error" element={<Error/>}></Route>
-                <Route path="/stats" element={<Statistics/>}></Route>
-                <Route path="/search" element={<Search/>}></Route>
-                <Route path="/addPost" element={<AddPost/>}></Route>
-            </Routes>
+            <AppRouter/>
             <Footer/>
         </BrowserRouter>
         </AuthContext.Provider>

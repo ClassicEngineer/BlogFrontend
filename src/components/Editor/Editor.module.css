@@ -1,3 +1,17 @@
 .editorContainer {
     margin: 0  auto;
+    min-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.postContent {
+    padding-top: 50px;
+    white-space: pre-wrap;
+}
+
+.editorContainer button {
+    width: 50%;
+    align-self: center;
 }

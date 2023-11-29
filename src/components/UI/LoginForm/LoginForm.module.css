@@ -13,7 +13,6 @@
 .formContainer label {
     padding-top: 5px;
     align-self: center;
-
 }
 
 .formContainer input {
@@ -21,19 +20,4 @@
     border-radius: 8px;
     padding: 3px;
     text-align: center;
-}
-
-.formContainer button {
-    background-color: #1f873d;
-    color: white;
-    border-radius: 8px;
-    height: 30px;
-}
-
-.formContainer button:hover {
-    background-color: #358560;
-}
-
-.formContainer button:active {
-    background-color: #4fa17b;
 }

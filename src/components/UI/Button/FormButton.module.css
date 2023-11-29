@@ -1,0 +1,15 @@
+.formButton {
+    background-color: #1f873d;
+    color: white;
+    border-radius: 8px;
+    height: 30px;
+    border: black solid 1px;
+}
+
+.formButton:hover {
+    background-color: #358560;
+}
+
+.formButton:active {
+    background-color: #4fa17b;
+}
