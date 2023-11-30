@@ -4,6 +4,8 @@
     border-radius: 8px;
     height: 30px;
     border: 1px solid #cbd5e1;
+    width: 40%;
+    align-self: center;
 }
 
 .formButton:hover {
@@ -13,3 +15,4 @@
 .formButton:active {
     background-color: #ffffff;
 }
+

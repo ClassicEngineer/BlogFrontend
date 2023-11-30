@@ -24,6 +24,13 @@ class BlogService {
     async getPostById(id) {
         return await  axios.get(BLOG_API_BASE_URL + 'posts/' + id);
     }
+
+    async updateBlogPost(id, content) {
+        return await axios.put(BLOG_API_BASE_URL + 'posts/' + id, {
+            content: content
+        } );
+    }
+
 }
 
 export default new BlogService()

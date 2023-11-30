@@ -3,3 +3,7 @@
     transform: scale(0.9);
     cursor: pointer;
 }
+
+.codeButton {
+    color: black;
+}

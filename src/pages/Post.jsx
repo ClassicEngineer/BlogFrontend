@@ -1,17 +1,22 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import BlogService from "../services/BlogService";
 import MDEditor from "@uiw/react-md-editor";
 import {useFetching} from "../hooks/useFetching";
+import EditButton from "../components/EditButton/EditButton";
+import {BlogContext} from "../context";
 
 const Post = () => {
     const params = useParams()
     const [post, setPost] = useState({});
+    const {blogContext, setBlogContext} = useContext(BlogContext)
 
     const [fetchPostById] = useFetching(async (id) => {
         const response = await BlogService.getPostById(id)
         if (response.data) {
             setPost(response.data);
+            blogContext.edit = response.data;
+            setBlogContext(blogContext)
         }
     });
 
@@ -25,6 +30,8 @@ const Post = () => {
             <div>
                 <MDEditor.Markdown source={post.content} />
             </div>
+            <EditButton postId={params.id}/>
+
         </div>
     );
 };

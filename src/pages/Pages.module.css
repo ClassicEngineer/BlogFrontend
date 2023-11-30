@@ -1,0 +1,14 @@
+.editorContainer {
+    margin: 0  auto;
+    min-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+    height: 100%;
+}
+
+.editorContainer button {
+    width: 50%;
+    align-self: center;
+}

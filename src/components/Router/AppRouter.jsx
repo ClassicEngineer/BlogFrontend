@@ -16,8 +16,6 @@ const AppRouter = () => {
             />
         )}
 
-    console.log(buildRoutes(privateRoutes))
-
     return (
             <Routes>
                 {buildRoutes(isAuth? privateRoutes : publicRoutes)}
