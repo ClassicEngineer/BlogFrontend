@@ -154,6 +154,8 @@ const FeaturePanel = (props) => {
         icons['lock'].show = isAuth;
         icons['add'].show = isAuth;
         icons['login'].show = !isAuth;
+        icons['about'].show = !isAuth;
+        icons['github'].show = !isAuth;
 
         return (
             <div className={classes.panel}>
