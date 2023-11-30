@@ -6,6 +6,7 @@ import Search from "../pages/Search";
 import Settings from "../pages/Settings";
 import Statistics from "../pages/Statistics";
 import Post from "../pages/Post";
+import AddImage from "../pages/AddImage";
 
 
 export const publicRoutes = [
@@ -20,6 +21,7 @@ export const publicRoutes = [
 
 export const privateRoutes = [
     {path: '/addPost', component: AddPost},
+    {path: '/addImage', component: AddImage},
     ...publicRoutes,
 ]
 

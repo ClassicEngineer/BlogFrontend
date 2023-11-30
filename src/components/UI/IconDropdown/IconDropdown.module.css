@@ -1,0 +1,15 @@
+.dropdown {
+
+}
+.dropdown .item {
+    display: none;
+}
+
+.dropdown:hover .item{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 30px;
+    z-index: 10;
+}

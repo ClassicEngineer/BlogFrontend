@@ -2,15 +2,18 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import BlogService from "../services/BlogService";
 import MDEditor from "@uiw/react-md-editor";
+import {useFetching} from "../hooks/useFetching";
 
 const Post = () => {
     const params = useParams()
     const [post, setPost] = useState({});
 
-    const fetchPostById = async (id) => {
+    const [fetchPostById] = useFetching(async (id) => {
         const response = await BlogService.getPostById(id)
-        setPost(response.data);
-    };
+        if (response.data) {
+            setPost(response.data);
+        }
+    });
 
     useEffect(() => {
         fetchPostById(params.id)

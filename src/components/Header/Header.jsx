@@ -3,12 +3,13 @@ import classes from "./Header.module.css";
 import BlogService from "../../services/BlogService";
 import FeatureTab from "../FeatureTab/FeatureTab";
 import {Link} from "react-router-dom";
+import {useFetching} from "../../hooks/useFetching";
 
 const Header = () => {
 
     let [blogName, setBlogName] = useState('Blog');
 
-    let fetchingBlogProperties = (async () => {
+    const [fetchingBlogProperties] = useFetching(async () => {
         console.log('Fetching blog properties was called')// when is it should be called?
         const response = await BlogService.getBlogProperties();
         let blogName = response.data['blogName'];

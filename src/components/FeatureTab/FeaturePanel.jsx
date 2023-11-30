@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {
-    faChartSimple,
-    faGear, faHouse, faLock,
+    faChartSimple, faFilePen,
+    faGear, faHouse, faImage, faLock,
     faMagnifyingGlass,
     faMoon, faPlus,
     faQuestion,
@@ -15,6 +15,7 @@ import {Link, useNavigate} from "react-router-dom";
 import ModalView from "../UI/ModalView/ModalView";
 import About from "./About";
 import {AuthContext} from "../../context";
+import IconDropdown from "../UI/IconDropdown/IconDropdown";
 
 const FeaturePanel = (props) => {
     const navigate = useNavigate();
@@ -75,12 +76,6 @@ const FeaturePanel = (props) => {
                                key = {4}
     />
 
-    {/*add post, private function*/}
-    const addPost = <Link
-        to={"/addPost"}
-        key = {8}>
-        <IconButton faIcon={faPlus}/>
-    </Link>
 
 
     const lock = <IconButton faIcon={faLock}
@@ -98,6 +93,20 @@ const FeaturePanel = (props) => {
                               key = {7}
     />
 
+    {/*add smth, private function*/}
+    const add = <IconDropdown faIcon={faPlus}
+                              key = {10}>
+        <Link
+            to={"/addPost"}
+            key = {8}>
+            <IconButton faIcon={faFilePen}/>
+        </Link>
+        <Link
+            to={"/addImage"}
+            key = {9}>
+            <IconButton faIcon={faImage}/>
+        </Link>
+    </IconDropdown>
 
     const icons = {
         home: {
@@ -116,14 +125,9 @@ const FeaturePanel = (props) => {
             icon: settings,
             show: true
         },
-
         search: {
             icon: search,
             show: true
-        },
-        addPost: {
-            icon: addPost,
-            show: false
         },
         stats: {
             icon: stats,
@@ -136,7 +140,11 @@ const FeaturePanel = (props) => {
         github: {
             icon: github,
             show: true,
-        }
+        },
+        add: {
+            icon: add,
+            show: false,
+        },
     }
 
 
@@ -144,7 +152,7 @@ const FeaturePanel = (props) => {
 
         icons['home'].show = window.location.pathname !== '/';
         icons['lock'].show = isAuth;
-        icons['addPost'].show = isAuth;
+        icons['add'].show = isAuth;
         icons['login'].show = !isAuth;
 
         return (
