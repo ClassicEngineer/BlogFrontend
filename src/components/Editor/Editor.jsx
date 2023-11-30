@@ -1,20 +1,30 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import classes from "./Editor.module.css";
 import MDEditor from '@uiw/react-md-editor';
 import FormButton from "../UI/Button/FormButton";
 import BlogService from "../../services/BlogService";
 import {useNavigate} from "react-router-dom";
+import {BlogContext} from "../../context";
 
 const Editor = () => {
 
-    const [value, setValue] = React.useState("**Hello world!!!**");
+    const initialPostContent = '---\n' +
+        'title: "Title"\n' +
+        'date:' + new Date().toDateString() + '\n' +
+        'image: "image.jpg"\n' +
+        'draft: false\n' +
+        'tags:\n' +
+        '  - tagA\n' +
+        '---'
+    const [value, setValue] = React.useState(() => initialPostContent);
     const navigate = useNavigate();
+    const {posts, setPosts} = useContext(BlogContext);
+
 
     const publish = (event) => {
         event.preventDefault();
-        console.log('Sending blog post to server: ' + value);
-        BlogService.addBlogPost('Title', value);
-        navigate('/');
+         BlogService.addBlogPost(value).then(response => navigate(`/posts/${response.data.id}`));
+
     }
 
 
@@ -23,7 +33,7 @@ const Editor = () => {
             <MDEditor
                 value={value}
                 onChange={setValue}
-                height="100%"
+                preview={"edit"}
             />
 
 

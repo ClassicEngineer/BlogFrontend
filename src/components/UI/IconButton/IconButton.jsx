@@ -2,13 +2,11 @@ import React from 'react';
 import classes from "./IconButton.module.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const IconButton = (props) => {
+const IconButton = ({...props}) => {
     return (
-        <FontAwesomeIcon icon={props.faIcon}
+        <FontAwesomeIcon {...props}
                          size={props.size || "2x"}
-                         onClick={props.onClick}
                          className={classes.codeButton}
-                         key={props.faIcon.iconName}
         />
 
     );

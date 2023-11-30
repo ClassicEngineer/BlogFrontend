@@ -10,12 +10,25 @@ import Search from "./pages/Search";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import {useEffect, useState} from "react";
-import {AuthContext} from "./context";
+import {AuthContext, BlogContext} from "./context";
 import AddPost from "./pages/AddPost";
 import AppRouter from "./components/Router/AppRouter";
+import {useFetching} from "./hooks/useFetching";
+import BlogService from "./services/BlogService";
 function App() {
 
     const [isAuth, setIsAuth] = useState(false);
+    const [posts, setPosts] = useState([]);
+
+    let [fetchingBlogPosts]= useFetching(async () => {
+        console.log('Fetching blog posts was called')
+        const response = await BlogService.getBlogPosts();
+        setPosts(response.data)
+    });
+
+    useEffect(() => {
+        fetchingBlogPosts()
+    }, []);
 
     useEffect(() => {
         if (localStorage.getItem('auth')) {
@@ -28,11 +41,16 @@ function App() {
             isAuth,
             setIsAuth,
         }}>
-        <BrowserRouter>
-            <Header/>
-            <AppRouter/>
-            <Footer/>
-        </BrowserRouter>
+            <BlogContext.Provider value={{
+                posts,
+                setPosts
+            }}>
+                <BrowserRouter>
+                    <Header/>
+                    <AppRouter/>
+                    <Footer/>
+                 </BrowserRouter>
+            </BlogContext.Provider>
         </AuthContext.Provider>
     );
 }

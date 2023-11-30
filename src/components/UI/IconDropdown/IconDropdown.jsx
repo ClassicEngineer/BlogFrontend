@@ -6,7 +6,7 @@ import classes from "./IconDropdown.module.css";
 const IconDropdown = ({children, ...props}) => {
     return (
             <div className={classes.dropdown}>
-                <IconButton faIcon = {props.faIcon}></IconButton>
+                <IconButton {...props}/>
                 <div className={classes.item}>
                     {children}
                 </div>

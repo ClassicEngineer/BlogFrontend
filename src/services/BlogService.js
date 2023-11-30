@@ -15,9 +15,8 @@ class BlogService {
         })
     }
 
-    async addBlogPost(title, content) {
+    async addBlogPost(content) {
         return await  axios.post(BLOG_API_BASE_URL + 'posts', {
-            title: title,
             content: content
         });
     }

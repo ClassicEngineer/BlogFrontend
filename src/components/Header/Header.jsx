@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import classes from "./Header.module.css";
 import BlogService from "../../services/BlogService";
 import FeatureTab from "../FeatureTab/FeatureTab";
@@ -15,11 +15,11 @@ const Header = () => {
         let blogName = response.data['blogName'];
         setBlogName(blogName)
         document.title = blogName;
-    })
+    });
 
 
     useEffect(() => {
-        fetchingBlogProperties()
+       fetchingBlogProperties()
     }, [])
 
     return (
