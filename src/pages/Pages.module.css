@@ -8,7 +8,17 @@
     height: 100%;
 }
 
-.editorContainer button {
+.publishButton {
     width: 50%;
     align-self: center;
+}
+
+.editButton {
+    position: absolute;
+    margin-bottom: 10px;
+    color: black;
+    z-index: 2;
+    text-align: right;
+    bottom: 10px;
+    right: 35px;
 }

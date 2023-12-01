@@ -7,7 +7,6 @@ import Settings from "../pages/Settings";
 import Statistics from "../pages/Statistics";
 import Post from "../pages/Post";
 import AddImage from "../pages/AddImage";
-import EditPost from "../pages/EditPost";
 
 
 export const publicRoutes = [
@@ -22,7 +21,6 @@ export const publicRoutes = [
 
 export const privateRoutes = [
     {path: '/addPost', component: AddPost},
-    {path: '/editPost/:id', component: EditPost},
     {path: '/addImage', component: AddImage},
     ...publicRoutes,
 ]

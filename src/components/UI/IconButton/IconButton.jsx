@@ -6,7 +6,7 @@ const IconButton = ({...props}) => {
     return (
         <FontAwesomeIcon {...props}
                          size={props.size || "2x"}
-                         className={classes.codeButton}
+                         className={ props.className ? props.className : classes.codeButton}
         />
 
     );

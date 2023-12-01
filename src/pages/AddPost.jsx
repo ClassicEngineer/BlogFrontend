@@ -29,7 +29,7 @@ const AddPost = () => {
         <div className={classes.editorContainer}>
             <h2>Create new post</h2>
             <Editor preview={"edit"} value = {value} onChange={setValue}/>
-            <FormButton onClick={publish}>Publish</FormButton>
+            <FormButton className = {classes.publishButton} onClick={publish}>Publish</FormButton>
         </div>
     );
 };
