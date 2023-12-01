@@ -3,10 +3,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 130px;
 }
 
-.header a{
+.header a {
     text-decoration: none;
     text-transform: none;
+}
+
+.header a:visited {
     color: black;
+}
+
+.header.dark a {
+    color: white;
+}
+.header.dark a:visited {
+    color: white;
 }

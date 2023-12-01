@@ -10,7 +10,6 @@ import {faPenToSquare} from "@fortawesome/free-solid-svg-icons";
 import IconButton from "../components/UI/IconButton/IconButton";
 
 
-
 const Post = () => {
     const params = useParams()
     const [post, setPost] = useState({});
@@ -31,7 +30,6 @@ const Post = () => {
             if (e.ctrlKey && e.key === 's') {
                 e.preventDefault();
                 // Place your code here
-                /// save() --not working
             }
         });
     }, []);
@@ -51,7 +49,6 @@ const Post = () => {
         return arr[2];
     }
 
-
     return (
         <div className="App">
             {isEdit?
@@ -61,10 +58,12 @@ const Post = () => {
                     <FormButton onClick={save}>Save</FormButton>
                 </div>
                 :
-            <div>
+            <div className={classes.viewContainer}>
                 <h2>{post.title}</h2>
                 <MDEditor.Markdown source={post.content} />
-                <IconButton className = {classes.editButton} onClick={() => setIsEdit(true)} icon ={faPenToSquare} size={"3x"} />
+                <IconButton className = {classes.editButton}
+                            onClick={() => setIsEdit(true)}
+                            icon ={faPenToSquare} size={"3x"} />
             </div>
             }
         </div>

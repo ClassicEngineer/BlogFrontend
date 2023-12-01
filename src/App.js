@@ -1,36 +1,40 @@
 import './App.css';
 
 
-import {BrowserRouter, useParams} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import {useEffect, useState} from "react";
-import {AuthContext, BlogContext} from "./context";
+import {AppContext} from "./context";
 import AppRouter from "./components/Router/AppRouter";
-import {useFetching} from "./hooks/useFetching";
-import BlogService from "./services/BlogService";
 function App() {
 
-    const [isAuth, setIsAuth] = useState(false);
-
+    const [context, setContext] = useState({
+        auth:false,
+        theme: localStorage.getItem('theme'),
+        isDark: function (){ return this.theme === 'dark'},
+    });
 
     useEffect(() => {
-        if (localStorage.getItem('auth')) {
-            setIsAuth(true)
-        }
+        const theme = localStorage.getItem('theme');
+        const isAuth = Boolean(localStorage.getItem('auth'));
+        setContext(state => ({...state, auth: isAuth, theme: theme}));
     }, [])
 
+    console.log('App rendering with context:');
+    console.log(context)
+
     return (
-        <AuthContext.Provider value={{
-            isAuth,
-            setIsAuth,
+        <AppContext.Provider value={{
+            context,
+            setContext,
         }}>
                 <BrowserRouter>
                     <Header/>
                     <AppRouter/>
                     <Footer/>
                  </BrowserRouter>
-        </AuthContext.Provider>
+        </AppContext.Provider>
     );
 }
 

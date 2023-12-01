@@ -10,7 +10,6 @@ const IconDropdown = ({children, ...props}) => {
                 <div className={classes.item}>
                     {children}
                 </div>
-
             </div>
 
     );

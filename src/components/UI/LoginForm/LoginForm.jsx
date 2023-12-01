@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 import classes from "./LoginForm.module.css";
-import {AuthContext} from "../../../context";
+import {AppContext} from "../../../context";
 import {useNavigate} from "react-router-dom";
 import FormButton from "../Button/FormButton";
 
@@ -9,12 +9,12 @@ const LoginForm = (props) => {
 
     const [login, setLogin] = useState('admin'); // Declare a state variable...
     const [password, setPassword] = useState('admin'); // Declare a state variable...
-    const {isAuth, setIsAuth} = useContext(AuthContext);
+    const {context, setContext} = useContext(AppContext);
     const navigate = useNavigate();
     const signin = (event) => {
         event.preventDefault();
-        // go to server
-        setIsAuth(true);
+        //TODO: go to server and validate
+        setContext(state => ({...state, auth: true}));
         localStorage.setItem('auth', 'true')
         navigate('/')
     }

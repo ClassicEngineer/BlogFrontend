@@ -10,7 +10,6 @@
     background-color: #fff;
     overflow: hidden;
     transition: box-shadow .2s;
-
 }
 
 .postPreview:hover {
@@ -19,11 +18,19 @@
 }
 
 .postPreview h2 {
+    padding-top: 20px;
     padding-left: 5px;
 }
 
 .postPreview time {
     padding-left: 5px;
+    padding-top: 5px;
     padding-bottom: 5px;
     color: rgb(190, 185, 185);
+}
+
+.postPreview.dark {
+    border: 1px solid rgba(248, 245, 245, 0.2);
+    box-shadow: 0 4px 8px -2px rgba(204, 205, 208, 0.1);
+    background-color: #0c0c0c;
 }

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import PostPreview from "./PostPreview";
 import classes from "./PreviewContainer.module.css";
 import {useNavigate} from "react-router-dom";
+import {AppContext} from "../../context";
 
 const PostPreviewList = ({posts}) => {
 

@@ -8,17 +8,40 @@
     height: 100%;
 }
 
+.viewContainer {
+    margin: 0  auto;
+    max-width: 800px;
+    height: 100%;
+    text-align: left;
+}
+
+.viewContainer h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
 .publishButton {
     width: 50%;
     align-self: center;
 }
 
 .editButton {
-    position: absolute;
+    position: fixed;
     margin-bottom: 10px;
     color: black;
     z-index: 2;
     text-align: right;
     bottom: 10px;
     right: 35px;
+}
+
+.settingsContainer {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.settingsLabel {
+    padding: 10px 35px;
 }

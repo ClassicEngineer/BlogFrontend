@@ -1,10 +1,12 @@
 import React, {useContext} from 'react';
 import {Route, Routes} from "react-router-dom";
-import {AuthContext} from "../../context";
 import {privateRoutes, publicRoutes} from "../../router/routes";
-import Error from "../../pages/Error"
+import {AppContext} from "../../context";
 const AppRouter = () => {
-    const {isAuth} = useContext(AuthContext);
+    const {context, setContext} = useContext(AppContext);
+
+    console.log('Router rendering with context: ');
+    console.log(context)
 
     function buildRoutes(routes) {
         return routes.map(route =>
@@ -17,7 +19,7 @@ const AppRouter = () => {
 
     return (
             <Routes>
-                {buildRoutes(isAuth? privateRoutes : publicRoutes)}
+                {buildRoutes(context.auth? privateRoutes : publicRoutes)}
             </Routes>
     );
 };
