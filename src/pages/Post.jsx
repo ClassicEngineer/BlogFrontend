@@ -8,6 +8,7 @@ import Editor from "../components/Editor/Editor";
 import FormButton from "../components/UI/Button/FormButton";
 import {faPenToSquare} from "@fortawesome/free-solid-svg-icons";
 import IconButton from "../components/UI/IconButton/IconButton";
+import MarkdownService from "../services/MarkdownService";
 
 
 const Post = () => {
@@ -19,6 +20,7 @@ const Post = () => {
 
     const [fetchPostById] = useFetching(async (id) => {
         const response = await BlogService.getPostById(id)
+        response.data.imgSrc = 'http://localhost:8080/image/' + response.data.imgSrc;
         setPost(response.data);
         setMd(response.data.header + response.data.content);
         console.log("Fetch post by ID called. Is edit = " , isEdit)
@@ -35,19 +37,26 @@ const Post = () => {
     }, []);
 
 
+    function setPostPropertiesFromMarkdown(post, md) {
+        const header = MarkdownService.extractHeaderProperties(md);
+        post.content = MarkdownService.extractContent(md);
+        post.title = header.title;
+        post.imgSrc = header.image;
+        post.draft = header.draft;
+        post.tags = header.tags;
+
+        return post;
+    }
+
     const save = () => {
         BlogService.updateBlogPost(params.id, md).then(response => navigate(`/posts/${response.data.id}`));
-        // edit post and add it to all blog post by id
         setIsEdit(false);
-        post.content = deleteHeader(md);
+        // edit post and add it to all blog post by id
+        setPostPropertiesFromMarkdown(post, md);
         setPost(post)
     }
 
-    function deleteHeader(md) {
-        let arr = md.split("---")
-        console.log(arr)
-        return arr[2];
-    }
+
 
     return (
         <div className="App">
@@ -60,6 +69,7 @@ const Post = () => {
                 :
             <div className={classes.viewContainer}>
                 <h2>{post.title}</h2>
+                <img className={classes.postPicture} src={post.imgSrc} alt={"post preview"}/>
                 <MDEditor.Markdown source={post.content} />
                 <IconButton className = {classes.editButton}
                             onClick={() => setIsEdit(true)}

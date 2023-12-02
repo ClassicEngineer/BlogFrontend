@@ -5,7 +5,7 @@ import {useAsyncValue} from "react-router-dom";
 
 const Editor = ({...props}) => {
 
-    const [isFullscreen, setFullscreen] = useState(true);
+    const [isFullscreen, setFullscreen] = useState(props.fullscreen);
 
     useEffect(() => {
         document.addEventListener('keydown', (e) => {

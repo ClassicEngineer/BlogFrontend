@@ -9,3 +9,7 @@
   color:black;
   background-color: white;
 }
+
+.App h2 {
+  margin-bottom: 30px;
+}

@@ -10,8 +10,11 @@ class BlogService {
 
     async getBlogPosts(limit, page) {
         return await axios.get(BLOG_API_BASE_URL + 'posts', {
-            limit: limit,
-            page: page
+            params: {
+                limit: limit,
+                page: page
+            },
+
         })
     }
 
@@ -29,6 +32,15 @@ class BlogService {
         return await axios.put(BLOG_API_BASE_URL + 'posts/' + id, {
             content: content
         } );
+    }
+
+    async search(input, limit) {
+        return await axios.get(BLOG_API_BASE_URL + 'search', {
+            params: {
+                input: input,
+                limit: limit
+            }
+        });
     }
 
 }

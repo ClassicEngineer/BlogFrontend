@@ -7,11 +7,11 @@ import BlogService from "../../services/BlogService";
 
 const Posts = () => {
 
-    const [blogContext, setBlogContext] = useState({posts:[]});
+    const [posts, setPosts] = useState([]);
 
     let [fetchingBlogPosts] = useFetching(async () => {
         const response = await BlogService.getBlogPosts();
-        setBlogContext({posts: response.data})
+        setPosts(response.data)
         console.log('Fetching blog posts was called')
 
     });
@@ -22,7 +22,7 @@ const Posts = () => {
 
     return (
         <main className={classes.posts}>
-            <PostPreviewList posts={blogContext.posts}/>
+            <PostPreviewList posts={posts}/>
         </main>
     );
 };
