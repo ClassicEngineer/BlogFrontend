@@ -32,7 +32,7 @@ const Settings = () => {
         <div className="App">
             <h2>Settings</h2>
             <div className={classes.settingsContainer}>
-                <label className={classes.settingsLabel}>Dark mode (not working properly)</label>
+                <label className={classes.settingsLabel}>Dark mode</label>
                     <Toggle
                         checked={isDark}
                         onChange={() => {setIsDark(!isDark)}}

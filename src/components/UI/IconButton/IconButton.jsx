@@ -4,14 +4,13 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {AppContext} from "../../../context";
 
 const IconButton = ({...props}) => {
-    const {context, setContext} = useContext(AppContext);
+    const {context} = useContext(AppContext);
 
-    const isDark = context.theme === 'dark';
 
     return (
-        <FontAwesomeIcon {...props}
+        props.hide ? <></> : <FontAwesomeIcon {...props}
                          size={props.size || "2x"}
-                         style={ isDark? {color: "#f6f5f4",} : {color: "#000000"}}
+                         style={ context.isDark()? {color: "#f6f5f4",} : {color: "#000000"}}
                          className={ props.className ? props.className : classes.codeButton}
         />
 

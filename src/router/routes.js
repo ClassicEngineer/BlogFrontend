@@ -17,6 +17,7 @@ export const publicRoutes = [
     {path: '/settings', component: Settings},
     {path: '/stats', component: Statistics},
     {path: '/posts/:id', component: Post},
+    {path: '*', component: Error}
 ]
 
 export const privateRoutes = [
