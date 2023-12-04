@@ -24,7 +24,7 @@ const Header = () => {
     }, [])
 
     return (
-        <header className={ context.isDark()? `${classes.header} ${classes.dark}` : classes.header}>
+        <header  className={ context.isDark()? `${classes.header} ${classes.dark}` : classes.header}>
             <Link to="/"><h1>{blogName}</h1></Link>
             <FeatureTab/>
         </header>

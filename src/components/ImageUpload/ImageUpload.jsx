@@ -50,7 +50,6 @@ const ImageUpload = () => {
             <input className={classes.inputFileUpload} ref={inputRef} type="file"  id="input-file-upload" multiple={true} accept={acceptImages} onChange={handleChange}  />
             <label id="label-file-upload" htmlFor="input-file-upload" className={dragActive ? classes.labelFileUploadDragActive : classes.labelFileUpload }>
                 <div>
-                    <p>Drag and drop your images here or</p>
                     <button className={classes.uploadButton} onClick={onButtonClick}>Upload an image</button>
                 </div>
             </label>

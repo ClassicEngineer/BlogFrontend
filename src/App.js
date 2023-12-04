@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import {useEffect, useState} from "react";
 import {AppContext} from "./context";
 import AppRouter from "./components/Router/AppRouter";
+import ThemeService from "./services/ThemeService";
 function App() {
 
     const [context, setContext] = useState({
@@ -18,6 +19,7 @@ function App() {
         const theme = localStorage.getItem('theme');
         const isAuth = Boolean(localStorage.getItem('auth'));
         setContext(state => ({...state, auth: isAuth, theme: theme}));
+        ThemeService.changeTheme(context.isDark())
     }, [])
 
     console.log('App rendering with context:');

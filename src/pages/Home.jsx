@@ -3,7 +3,7 @@ import Posts from "../components/Posts/Posts";
 
 const Home = () => {
     return (
-        <div className={"App"}>
+        <div id={"top"} className={"App"}>
             <Posts/>
         </div>
     );

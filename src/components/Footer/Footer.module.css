@@ -1,8 +1,16 @@
 .footer {
+    padding-top: 10px;
     align-self: center;
 }
+
+
 
 .footer a {
     color: black;
     text-decoration:none
+}
+
+.footer.dark a {
+    color: #efefef;
+    text-decoration: none;
 }

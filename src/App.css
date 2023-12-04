@@ -6,10 +6,10 @@
 }
 
 .App.dark {
-  color:black;
-  background-color: white;
+  color: #efefef;
+  background-color: #1f2023;
 }
 
-.App h2 {
+.App > h2 {
   margin-bottom: 30px;
 }

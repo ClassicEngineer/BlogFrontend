@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import Toggle from "../components/UI/Toggle/Toggle";
 import classes from "./Pages.module.css";
 import {AppContext} from "../context";
+import ThemeService from "../services/ThemeService";
 
 const Settings = () => {
 
@@ -12,13 +13,7 @@ const Settings = () => {
     console.log(context)
 
     useEffect(() => {
-        let theme = isDark ?  'dark' : 'light';
-        if (isDark) {
-            document.body.classList.add(theme);
-        } else {
-            document.body.classList.remove('dark');
-        }
-        localStorage.setItem('theme', theme);
+        let theme = ThemeService.changeTheme(isDark)
         setContext(state => ({...state, theme: theme}));
 
     }, [isDark]);

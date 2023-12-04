@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import classes from './PostPreview.module.css'
 import {useNavigate} from "react-router-dom";
 import {AppContext} from "../../context";
+import ImageService from "../../services/ImageService";
 const PostPreview = ({post}) => {
 
     const {context, setContext} = useContext(AppContext);
@@ -14,7 +15,7 @@ const PostPreview = ({post}) => {
     return (
         <div className={context.isDark()? `${classes.postPreview} ${classes.dark}` : classes.postPreview}
                 onClick={goToPost}>
-                <img src={'http://localhost:8080/image/' + post.imgSrc}
+                <img src={ImageService.getImagePath(post.imgSrc)}
                      alt={'BlogPostPreviewImage'}
                 width='300px'
                 height='100px'/>

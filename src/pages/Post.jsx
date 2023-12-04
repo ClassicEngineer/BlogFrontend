@@ -9,6 +9,7 @@ import FormButton from "../components/UI/Button/FormButton";
 import {faPenToSquare} from "@fortawesome/free-solid-svg-icons";
 import IconButton from "../components/UI/IconButton/IconButton";
 import MarkdownService from "../services/MarkdownService";
+import ImageService from "../services/ImageService";
 
 
 const Post = () => {
@@ -20,7 +21,6 @@ const Post = () => {
 
     const [fetchPostById] = useFetching(async (id) => {
         const response = await BlogService.getPostById(id)
-        response.data.imgSrc = 'http://localhost:8080/image/' + response.data.imgSrc;
         setPost(response.data);
         setMd(response.data.header + response.data.content);
         console.log("Fetch post by ID called. Is edit = " , isEdit)
@@ -69,7 +69,7 @@ const Post = () => {
                 :
             <div className={classes.viewContainer}>
                 <h2>{post.title}</h2>
-                <img className={classes.postPicture} src={post.imgSrc} alt={"post preview"}/>
+                <img className={classes.postPicture} src={ImageService.getImagePath(post.imgSrc)} alt={"PostPreviewPicture"}/>
                 <MDEditor.Markdown source={post.content} />
                 <IconButton className = {classes.editButton}
                             onClick={() => setIsEdit(true)}

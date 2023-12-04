@@ -1,9 +1,15 @@
 .header {
+    position: sticky;
+    top: 0;
     padding: 10px 35px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 130px;
+}
+
+.header.dark {
+    background-color: #1f2023;
+    color: #efefef;
 }
 
 .header a {

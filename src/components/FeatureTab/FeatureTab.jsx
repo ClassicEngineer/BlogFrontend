@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState} from 'react';
 import FeaturePanel from "./FeaturePanel";
 import classes from "./FeatureTab.module.css";
 import {faCode} from "@fortawesome/free-solid-svg-icons";
